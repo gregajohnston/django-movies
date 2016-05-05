@@ -1,5 +1,6 @@
 secrets.py
 db.sqlite3
+ml-100k/
 
 # Compiled source #
 ###################
