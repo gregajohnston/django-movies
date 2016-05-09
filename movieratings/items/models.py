@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Movie(models.Model):
+    id = models.CharField(max_length=20, primary_key=True)
     title = models.CharField(max_length=150)
     rel_date = models.DateTimeField('date release')
     imdb_url = models.CharField(max_length=200)
@@ -12,6 +13,7 @@ class Movie(models.Model):
 
 
 class Rater(models.Model):
+    id = models.CharField(max_length=20, primary_key=True)
     age = models.IntegerField(default=0)
     gender = models.CharField(max_length=1)
     occupation = models.CharField(max_length=150)
