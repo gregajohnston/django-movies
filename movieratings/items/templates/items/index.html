@@ -1,9 +1,9 @@
-{% if latest_item_list %}
+{% if latest_movie_list %}
     <ul>
-    {% for item in latest_item_list %}
-        <li><a href="/polls/{{ item.id }}/">{{ item.item_text }}</a></li>
+    {% for item in latest_movie_list %}
+        <li><a href="/items/{{ movie.id }}/">{{ movie.title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No items. are available.</p>
+    <p>No items are available.</p>
 {% endif %}
