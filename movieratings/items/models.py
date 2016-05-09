@@ -24,9 +24,9 @@ class Rater(models.Model):
 
 
 class Rating(models.Model):
-    rater = models.ForeignKey(Rater, on_delete=models.CASCADE)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, default=0)
+    rater = models.ForeignKey(Rater, on_delete=models.CASCADE, default=0)
     rating = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.movie
+        return self.rating
