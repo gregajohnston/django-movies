@@ -6,7 +6,7 @@ from datetime import date, datetime
 MOVIE_COLUMNS = ['id', 'title', 'date_added', 'drop',
                  'imdb_url'] + ['genre_{}'.format(x) for x in range(1, 20)]
 RATER_COLUMNS = ['id', 'age', 'gender', 'occupation', 'zip_code']
-RATING_COLUMNS = ['user_id', 'movie_id', 'rating', 'timestamp']
+RATING_COLUMNS = ['rater_id', 'movie_id', 'rating', 'timestamp']
 
 MOVIE_FILE = 'data/u.item'
 RATER_FILE = 'data/u.user'
@@ -54,6 +54,7 @@ def read_data(input_file, output_file, column_names, model_name):
                 output += "{" + "\"model\": \"{}\", \"pk\": {}, ".format(
                             model_name, index_value)
                 output += "\"fields\": {}".format(json.dumps(row)) + "}, "
+            output = output[:-2]
             output += "]"
             j.write(output)
 
