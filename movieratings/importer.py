@@ -3,9 +3,9 @@ import json
 from datetime import date, datetime
 
 
-MOVIE_COLUMNS = ['id', 'title', 'date_added', 'drop',
+MOVIE_COLUMNS = ['movie_id', 'title', 'date_added', 'drop',
                  'imdb_url'] + ['genre_{}'.format(x) for x in range(1, 20)]
-RATER_COLUMNS = ['id', 'age', 'gender', 'occupation', 'zip_code']
+RATER_COLUMNS = ['rater_id', 'age', 'gender', 'occupation', 'zip_code']
 RATING_COLUMNS = ['rater_id', 'movie_id', 'rating', 'timestamp']
 
 MOVIE_FILE = 'data/u.item'
@@ -33,7 +33,7 @@ def read_data(input_file, output_file, column_names, model_name):
             counter = 0
             for row in reader:
                 if input_file == 'data/u.item':
-                    index_value = row['id']
+                    index_value = row['movie_id']
 
                     date_added = row['date_added']
                     if date_added:
@@ -44,10 +44,10 @@ def read_data(input_file, output_file, column_names, model_name):
                     row['date_added'] = date_added.strftime('%Y-%m-%d')
 
                     del row['drop']
-                    del row['id']
+                    del row['movie_id']
                 if input_file == 'data/u.user':
-                    index_value = row['id']
-                    del row['id']
+                    index_value = row['rater_id']
+                    del row['rater_id']
                 if input_file == 'data/u.data':
                     counter += 1
                     index_value = counter

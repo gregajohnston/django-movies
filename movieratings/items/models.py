@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Movie(models.Model):
-    id = models.CharField(max_length=20, primary_key=True)
+    movie_id = models.CharField(max_length=20, primary_key=True)
     title = models.CharField(max_length=150)
     date_added = models.DateField('date added')
     imdb_url = models.CharField(max_length=200)
@@ -32,7 +32,7 @@ class Movie(models.Model):
 
 
 class Rater(models.Model):
-    id = models.CharField(max_length=20, primary_key=True)
+    rater_id = models.CharField(max_length=20, primary_key=True)
     age = models.IntegerField(default=0)
     gender = models.CharField(max_length=1)
     occupation = models.CharField(max_length=150)
@@ -45,8 +45,8 @@ class Rater(models.Model):
 class Rating(models.Model):
     # movie_id = models.CharField(max_length=20, default=0)
     # rater_id = models.CharField(max_length=20, default=0)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, default=0)
-    rater = models.ForeignKey(Rater, on_delete=models.CASCADE, default=0)
+    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE, default=0)
+    rater_id = models.ForeignKey(Rater, on_delete=models.CASCADE, default=0)
     rating = models.IntegerField(default=0)
     timestamp = models.IntegerField(default=0)
 
