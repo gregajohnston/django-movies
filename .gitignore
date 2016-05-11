@@ -2,7 +2,7 @@ secrets.py
 db.sqlite3
 ml-100k/
 data/
-items/fixtures/
+fixtures/
 
 # Compiled source #
 ###################
