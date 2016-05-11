@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel='stylesheet' type='text/css' href='{% static 'items/style.css' %}' />
+
+<ul>
+    {% for movie in alphabet_movie_list %}
+        <li>
+            <a href='{% url 'items:detail' movie.movie_id %}'>
+                {{ movie.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

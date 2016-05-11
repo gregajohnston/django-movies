@@ -43,12 +43,9 @@ class Rater(models.Model):
 
 
 class Rating(models.Model):
-    # movie_id = models.CharField(max_length=20, default=0)
-    # rater_id = models.CharField(max_length=20, default=0)
-    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE, default=0)
-    rater_id = models.ForeignKey(Rater, on_delete=models.CASCADE, default=0)
+    movie_id = models.CharField(max_length=20, default=0)
+    rater_id = models.CharField(max_length=20, default=0)
+    # movie = models.ForeignKey(Movie, on_delete=models.CASCADE, default=0)
+    # rater = models.ForeignKey(Rater, on_delete=models.CASCADE, default=0)
     rating = models.IntegerField(default=0)
     timestamp = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.rating

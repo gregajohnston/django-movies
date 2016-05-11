@@ -1,18 +1,26 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Movie, Rating
+# from django.views.generic.list import ListView
 
 
-def index(request):
-    latest_movie_list = Movie.objects.order_by('-rel_date')[:5]
-    context = {'latest_movie_list': latest_movie_list}
-    return render(request, 'items/index.html',  context)
+# class MovieList(ListView):
+#     model = Movie
+#     context_object_name = 'movies'
 
 
-def detail(request, movie_id):
-    movie = get_object_or_404(Movie, pk=movie_id)
-    return render(request, 'items/detail.html', {'movie': movie})
+def movie_list(request):
+    alphabet_movie_list = Movie.objects.order_by('title')
+    context = {'alphabet_movie_list': alphabet_movie_list}
+    return render(request, 'items/movie_list.html',  context)
 
 
-def rating(request, movie_id):
-    rate = get_object_or_404(Rating, pk=movie_id)
-    return render(request, 'items/rate.html', {'rating': rate})
+def detail(request, mov_id):
+    movie = get_object_or_404(Movie, pk=mov_id)
+    context = {'movie': movie}
+    return render(request, 'items/detail.html', context)
+
+
+def rating(request, mov_id):
+    rate = get_object_or_404(Rating, pk=mov_id)
+    context = {'rating': rate}
+    return render(request, 'items/rate.html', context)
